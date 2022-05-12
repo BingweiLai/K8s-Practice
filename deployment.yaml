@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-demo-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demoApp
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: demoApp
+    spec:
+      containers:
+        - name: kube-demo-container
+          image: hcwxd/kubernetes-demo
+          ports:
+            - containerPort: 3000
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
